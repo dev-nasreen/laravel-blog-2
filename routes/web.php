@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+//front end routes
 Route::get('/', function(){
     return view('website.home');
-});
+})->name('website');
 Route::get('/about', function(){
     return view('website.about');
 });
@@ -39,6 +40,10 @@ Route::get('/post', function(){
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // admin routes
-Route::get('/adminpanel', function(){
-    return view('admin.dashboard.index');
+Route::group(['prefix' =>'admin', 'middleware'=>['auth']], function(){
+    Route::get('/dashboard', function(){
+        return view('admin.dashboard.index');
+    });
+    Route::resource('/category', CategoryController::class);
 });
+
