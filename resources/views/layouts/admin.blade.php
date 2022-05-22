@@ -207,7 +207,7 @@
               </p>
             </a>                    
           </li>
-        {{--   <li class="nav-item mt-auto">
+        <li class="nav-item mt-auto">
             <a href="{{ route('post.index') }}" class="nav-link {{ (request()->is('admin/post*')) ? 'active': '' }}">
               <i class="nav-icon fas fa-pen-square"></i>
               <p>
@@ -215,7 +215,7 @@
               </p>
             </a>                    
           </li>
-          <li class="nav-item mt-auto">
+        {{--     <li class="nav-item mt-auto">
             <a href="{{ route('contact.index') }}" class="nav-link {{ (request()->is('admin/contact*')) ? 'active': '' }}">
               <i class="nav-icon fas fa-envelope"></i>
               <p>
