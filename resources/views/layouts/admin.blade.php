@@ -199,7 +199,7 @@
               </p>
             </a>                    
           </li>
-          {{-- <li class="nav-item mt-auto">
+          <li class="nav-item mt-auto">
             <a href="{{ route('tag.index') }}" class="nav-link {{ (request()->is('admin/tag*')) ? 'active': '' }}">
               <i class="nav-icon fas fa-tag"></i>
               <p>
@@ -207,7 +207,7 @@
               </p>
             </a>                    
           </li>
-          <li class="nav-item mt-auto">
+        {{--   <li class="nav-item mt-auto">
             <a href="{{ route('post.index') }}" class="nav-link {{ (request()->is('admin/post*')) ? 'active': '' }}">
               <i class="nav-icon fas fa-pen-square"></i>
               <p>

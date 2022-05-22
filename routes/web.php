@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,5 +46,6 @@ Route::group(['prefix' =>'admin', 'middleware'=>['auth']], function(){
         return view('admin.dashboard.index');
     })->name('dashboard');
     Route::resource('/category', CategoryController::class);
+    Route::resource('/tag', TagController::class);
 });
 
