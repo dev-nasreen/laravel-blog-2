@@ -7,15 +7,15 @@
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0">Category Page</h1>
-        </div><!-- /.col -->
+        </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('website')}}">Home</a></li>
             <li class="breadcrumb-item active">Category</li>
           </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+        </div>
+      </div>
+    </div>
   </div>
   <!-- /.content-header -->
 
@@ -46,18 +46,27 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @if($categories->count())
+                    @foreach($categories as $category)
                     <tr>
-                      <td>1.</td>
-                      <td>Update software</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-danger">55%</span></td>
-                      <td><span class="badge bg-danger">55%</span></td>
+                        <td>{{ $category->id }}</td>
+                        <td>{{ $category->name }}</td>
+                        <td>{{ $category->slug }}</td>
+                        <td>
+                            {{ $category->id }}
+                        </td>
+                        <td class="d-flex">
+                            <a href="{{ route('category.edit', [$category->id]) }}" class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>
+                            <form action="{{ route('category.destroy', [$category->id]) }}" class="mr-1" method="POST">
+                                @method('DELETE')
+                                @csrf 
+                                <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-trash"></i> </button>
+                            </form>
+                            {{-- <a href="{{ route('category.show', [$category->id]) }}" class="btn btn-sm btn-success mr-1"> <i class="fas fa-eye"></i> </a> --}}
+                        </td>
                     </tr>
-                    
+                    @endforeach
+                    @endif
                   </tbody>
                 </table>
               </div>
