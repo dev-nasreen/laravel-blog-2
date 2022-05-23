@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Session;
+use App\Models\Tag;
 use App\Models\Post;
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -14,7 +20,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::all();
+        $categories = Category::all();
+        $posts = Post::orderBy('created_at', 'DESC')->paginate(20);
+        return view('admin.post.index', compact(['posts', 'tags', 'categories']));
     }
 
     /**
@@ -24,7 +33,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $tags = Tag::all();
+        $categories = Category::all();
+        return view('admin.post.create', compact(['categories', 'tags']));
     }
 
     /**
@@ -35,7 +46,39 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validation
+        $this->validate($request, [
+            'title' => 'required|unique:categories,name',
+            'image' => 'required|image',
+            'description' => 'required',
+            'category_id' => 'required',
+        ]);
+
+        // dd($request->all());
+
+        $post = Post::create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->name, '-'),
+            'image' => 'image.jpg',
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'user_id' => auth()->user()->id,
+            'published_at' => Carbon::now(),
+        ]);
+
+        $post->tags()->attach($request->tags);
+
+        if($request->hasFile('image')){
+                $file = $request->file('image');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $file->move('uploads/post/', $filename);
+                $post->image = $filename;
+                $post->save();
+            }
+
+        Session::flash('success', 'Post created successfully');
+
+        return redirect()->route('post.index');
     }
 
     /**
@@ -46,7 +89,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.post.show', compact(['post', 'categories', 'tags']));
     }
 
     /**
@@ -57,7 +102,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $tags = Tag::all();
+        $categories = Category::all();
+        return view('admin.post.edit', compact(['post', 'categories', 'tags']));
     }
 
     /**
@@ -69,7 +116,41 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        // validation
+        $this->validate($request, [
+            'title' => 'required|unique:categories,name, $post->id',
+            'description' => 'required',
+            'category_id' => 'required',
+        ]);
+
+        // dd($request->all());
+
+        
+        $post->title = $request->title;
+        $post->slug = Str::slug($request->title, '-');
+        $post->description = $request->description;
+        $post->category_id = $request->category_id;
+        
+
+        if($request->hasFile('image')){
+
+            $destination = 'uploads/post/'.$post->image;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('uploads/post/', $filename);
+            $post->image = $filename;
+        }
+
+        $post->tags()->sync($request->tags);
+
+        $post->save();
+        Session::flash('success', 'Post updated successfully');
+
+        return redirect()->route('post.index');
     }
 
     /**
@@ -80,6 +161,16 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if($post){
+            $destination = 'uploads/post/'.$post->image;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+            $post->delete();
+            Session::flash('success', 'Post deleted successfully');
+
+            return redirect()->route('post.index');
+        }
+        
     }
 }

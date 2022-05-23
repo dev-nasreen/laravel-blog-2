@@ -18,10 +18,10 @@ class CreatePostsTable extends Migration
             $table->string('title')->unique();
             $table->string('slug');
             $table->string('image');
-            $table->longText('dexcription');
+            $table->longText('description');
             $table->integer('category_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->timestamp('pulished_at');
+            $table->timestamp('published_at');
             $table->timestamps();
         });
     }

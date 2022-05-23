@@ -56,7 +56,7 @@
                                         </div>
                                     </td>
                                     <td>{{$post->title}}</td>
-                                    <td>{{$post->category_id}}</td>
+                                    <td>{{$post->category->name}}</td>
                                     <td>
                                         @foreach ($post->tags as $tag)
                                             <span class="badge badge-primary">{{$tag->name}}</span>

@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -13,7 +13,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        App\User::create([
+        User::create([
             'name'=> 'Nasreen Akter',
             'email'=>'nasreen@gmail.com',
             'password'=>bcrypt('12345678'),
