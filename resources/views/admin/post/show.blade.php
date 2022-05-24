@@ -28,7 +28,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Post Deatils</h3>
                         <div class="float-right">
-                            <a href="{{ route('category.index') }}" class="btn btn-primary ms-auto">Back to Post List</a>
+                            <a href="{{ route('post.index') }}" class="btn btn-primary ms-auto">Back to Post List</a>
                         </div>
                     </div>
 
@@ -40,7 +40,7 @@
                                     <th style="width: 200px">Image</th>
                                     <td>
                                         <div style="max-width: 300px; max-height:300px;overflow:hidden">
-                                            <img src="{{ asset('uploads/post/'.$post->image) }}" class="img-fluid" alt="">
+                                            <img src="{{$post->image }}" class="img-fluid" alt="">
                                         </div>
                                     </td>
                                 </tr>

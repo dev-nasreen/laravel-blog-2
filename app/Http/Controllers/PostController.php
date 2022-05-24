@@ -63,7 +63,7 @@ class PostController extends Controller
             'description' => $request->description,
             'category_id' => $request->category_id,
             'user_id' => auth()->user()->id,
-            'published_at' => Carbon::now(),
+            // 'published_at' => Carbon::now(),
         ]);
 
         $post->tags()->attach($request->tags);

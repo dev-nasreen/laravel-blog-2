@@ -52,7 +52,7 @@
                                     <td>{{$post->id}}</td>
                                     <td>
                                         <div>
-                                            <img src="{{ asset('uploads/post/' . $post->image)}}" style="width: 48px;" alt="">
+                                            <img src="{{ $post->image}}" style="width: 48px;" alt="">
                                         </div>
                                     </td>
                                     <td>{{$post->title}}</td>

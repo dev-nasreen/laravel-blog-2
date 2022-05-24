@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-@section('style')
-    <link rel="stylesheet" href="{{asset('admin')}}/css/summernote-bs4.min.css">    
-@endsection
+
 @section('content')
 <!-- Content Header (Page header) -->
 <div class="content-header">
@@ -43,7 +41,7 @@
                                     @csrf
                                     <div class="card-body">
                                         <div>
-                                            @include('layouts.inc.errors')
+                                            @include('includes.errors')
                                         </div>
                                         <div class="form-group">
                                             <label for="title">Post Title</label>
@@ -112,7 +110,7 @@
 @endsection
 
 @section('script')
-<script src="{{asset('admin')}}/js/summernote-bs4.min.js"></script>  
+<script src="{{asset('adminn')}}/js/summernote-bs4.min.js"></script>  
 <script>
       $('#description').summernote({
         placeholder: 'Write post description here',

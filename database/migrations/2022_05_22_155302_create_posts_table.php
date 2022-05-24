@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->longText('description');
             $table->integer('category_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->timestamp('published_at');
+            // $table->timestamp('published_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }

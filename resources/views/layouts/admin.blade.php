@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="{{asset('adminn')}}/plugins/fontawesome-free/css/all.min.css">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"> 
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('adminn')}}/css/adminlte.min.css">
 </head>
