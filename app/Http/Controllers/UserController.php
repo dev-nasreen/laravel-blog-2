@@ -18,7 +18,7 @@ class UserController extends Controller
      $this->validate($request, [
         'name' => 'required|string|max:255',
         'email'=> 'required|email|unique:users,email',
-        'passwoed'=> 'required|min:8'
+        'password'=> 'required|min:8'
      ]);
 
      $user = User::create([
@@ -38,7 +38,7 @@ class UserController extends Controller
     $this->validate($request, [
         'name' => 'required|string|max:255',
         'email'=> "required|email|unique:users,email, $user->id",
-        'passwoed'=> 'sometimes|min:8',
+        'password'=> 'sometimes|nullable|min:8',
      ]);
 
      
