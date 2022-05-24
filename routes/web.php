@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ PostController;
 use App\Http\Controllers\ FrontEndController;
+use App\Http\Controllers\ UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,7 @@ Route::group(['prefix' =>'admin', 'middleware'=>['auth']], function(){
     Route::resource('/category', CategoryController::class);
     Route::resource('/tag', TagController::class);
     Route::resource('/post', PostController::class);
+
+    Route::resource('user', UserController::class);
 });
 
