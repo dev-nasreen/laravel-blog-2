@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ PostController;
+use App\Http\Controllers\ FrontEndController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,21 +24,12 @@ Route::get('/', function () {
 
 Auth::routes();
 //front end routes
-Route::get('/', function(){
-    return view('website.home');
-})->name('website');
-Route::get('/about', function(){
-    return view('website.about');
-});
-Route::get('/category', function(){
-    return view('website.category');
-});
-Route::get('/contact', function(){
-    return view('website.contact');
-});
-Route::get('/post', function(){
-    return view('website.post');
-});
+Route::get('/', [FrontEndController::class, 'home'])->name('website');
+Route::get('/about', [FrontEndController::class, 'about'])->name('website.about');
+Route::get('/category', [FrontEndController::class, 'category'])->name('website.category');
+Route::get('/contact', [FrontEndController::class, 'contact'])->name('website.contact');
+Route::get('/post/{slug}', [FrontEndController::class, 'post'])->name('website.post');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
