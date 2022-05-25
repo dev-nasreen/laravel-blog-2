@@ -232,6 +232,14 @@
               </p>
             </a>
           </li> 
+          <li class="nav-item mt-auto">
+            <a href="{{ route('setting.index') }}" class="nav-link {{ (request()->is('admin/setting')) ? 'active': '' }}">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Setting
+              </p>
+            </a>
+          </li>
         {{--     <li class="nav-item mt-auto">
             <a href="{{ route('contact.index') }}" class="nav-link {{ (request()->is('admin/contact*')) ? 'active': '' }}">
               <i class="nav-icon fas fa-envelope"></i>

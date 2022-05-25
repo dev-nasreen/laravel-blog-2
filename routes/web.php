@@ -7,6 +7,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\ PostController;
 use App\Http\Controllers\ FrontEndController;
 use App\Http\Controllers\ UserController;
+use App\Http\Controllers\ SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,5 +49,13 @@ Route::group(['prefix' =>'admin', 'middleware'=>['auth']], function(){
 
     Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
     Route::post('/profile', [UserController::class, 'profile_update'])->name('user.profile.update');
+     // setting
+     Route::get('setting', [SettingController::class, 'edit'])->name('setting.index');
+     Route::post('setting', [SettingController::class, 'update'])->name('setting.update');
+ 
+    //  // Contact message
+    //  Route::get('/contact', 'ContactController@index')->name('contact.index');
+    //  Route::get('/contact/show/{id}', 'ContactController@show')->name('contact.show');
+    //  Route::delete('/contact/delete/{id}', 'ContactController@destroy')->name('contact.destroy');
 });
 
