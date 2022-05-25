@@ -49,7 +49,7 @@ class PostController extends Controller
         // validation
         $this->validate($request, [
             'title' => 'required|unique:categories,name',
-            'image' => 'required|image',
+            'image' => 'nullable|image',
             'description' => 'required',
             'category_id' => 'required',
         ]);

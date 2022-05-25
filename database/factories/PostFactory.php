@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+
 class PostFactory extends Factory
 {
     /**
@@ -17,12 +18,15 @@ class PostFactory extends Factory
 
     public function definition()
     {
-        // $id = rand(30, 300);
-        // $image = "https://picsum.photos/id/".$id."/700/600.jpg";
+        $id = rand(30, 300);
+        $image = "https://picsum.photos/id/".$id."/700/600.jpg";
+        
         return [
+            
+          
             'title' => $this->faker->sentence(),
             'slug' =>Str::slug($this->faker->sentence()),
-            'image' =>  $faker->url('http://lorempixel.com/400/200/sports/',640,480),
+            'image' =>  $image,
             'description'=> $this->faker->text(400),
             'category_id'=> function(){
                 return Category::inRandomOrder()->first()->id;

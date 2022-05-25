@@ -224,6 +224,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item mt-auto">
+            <a href="{{ route('user.profile') }}" class="nav-link {{ (request()->is('admin/profile')) ? 'active': '' }}">
+              <i class="nav-icon far fa-user"></i>
+              <p>
+                Your Profile
+              </p>
+            </a>
+          </li> 
         {{--     <li class="nav-item mt-auto">
             <a href="{{ route('contact.index') }}" class="nav-link {{ (request()->is('admin/contact*')) ? 'active': '' }}">
               <i class="nav-icon fas fa-envelope"></i>

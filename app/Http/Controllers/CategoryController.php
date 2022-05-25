@@ -98,7 +98,7 @@ class CategoryController extends Controller
        
        Session::flash('success', 'Category updated successfully');
 
-       return view('admin.category.index');
+       return redirect()->back();
     }
 
     /**

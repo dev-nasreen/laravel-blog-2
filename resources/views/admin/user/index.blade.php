@@ -50,7 +50,7 @@
                                         <td>{{ $user->id }}</td>
                                         <td> 
                                             <div style="max-width: 70px; max-height:70px;overflow:hidden">
-                                                <img src="{{ asset($user->image) }}" class="img-fluid" alt="">
+                                                <img src="{{asset('uploads')}}/user/{{ $user->image }}" class="img-fluid" alt="image">
                                             </div>
                                         </td>
                                         <td>{{ $user->name }}</td>

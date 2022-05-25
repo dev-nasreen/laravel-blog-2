@@ -27,7 +27,7 @@ Auth::routes();
 //front end routes
 Route::get('/', [FrontEndController::class, 'home'])->name('website');
 Route::get('/about', [FrontEndController::class, 'about'])->name('website.about');
-Route::get('/category', [FrontEndController::class, 'category'])->name('website.category');
+Route::get('/category/{slug}', [FrontEndController::class, 'category'])->name('website.category');
 Route::get('/contact', [FrontEndController::class, 'contact'])->name('website.contact');
 Route::get('/post/{slug}', [FrontEndController::class, 'post'])->name('website.post');
 
@@ -45,5 +45,8 @@ Route::group(['prefix' =>'admin', 'middleware'=>['auth']], function(){
     Route::resource('/post', PostController::class);
 
     Route::resource('user', UserController::class);
+
+    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/profile', [UserController::class, 'profile_update'])->name('user.profile.update');
 });
 

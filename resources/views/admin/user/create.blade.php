@@ -35,7 +35,7 @@
                     <div class="card-body p-0">
                         <div class="row">
                             <div class="col-12 col-lg-6 offset-lg-3 col-md-8 offset-md-2">
-                                <form action="{{ route('user.store') }}" method="POST">
+                                <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="card-body">
                                         @include('includes.errors')
@@ -46,6 +46,13 @@
                                         <div class="form-group">
                                             <label for="email">User email</label>
                                             <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="image">User image</label>
+                                                <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="image" id="exampleInputFile">
+                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="password">User password</label>
