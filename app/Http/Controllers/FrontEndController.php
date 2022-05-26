@@ -62,4 +62,6 @@ class FrontEndController extends Controller
             return redirect('/');
         }
    }
+
+   
 }

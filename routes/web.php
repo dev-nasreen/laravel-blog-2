@@ -8,6 +8,7 @@ use App\Http\Controllers\ PostController;
 use App\Http\Controllers\ FrontEndController;
 use App\Http\Controllers\ UserController;
 use App\Http\Controllers\ SettingController;
+use App\Http\Controllers\ ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ Route::get('/about', [FrontEndController::class, 'about'])->name('website.about'
 Route::get('/category/{slug}', [FrontEndController::class, 'category'])->name('website.category');
 Route::get('/contact', [FrontEndController::class, 'contact'])->name('website.contact');
 Route::get('/post/{slug}', [FrontEndController::class, 'post'])->name('website.post');
+Route::post('/contact', [ContactController::class, 'send_message'])->name('website.contact');
+
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
