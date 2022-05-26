@@ -21,16 +21,11 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 order-md-2">
-            <img src="{{asset('website')}}/images/img_1.jpg" alt="Image" class="img-fluid">
+            <img src="{{asset('uploads')}}/user/{{$user->image}}" alt="Image" class="img-fluid">
           </div>
           <div class="col-md-5 mr-auto order-md-1">
-            <h2>We Love To Explore</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptate odit corrupti vitae cupiditate explicabo, soluta quibusdam necessitatibus, provident reprehenderit, dolorem saepe non eligendi possimus autem repellendus nesciunt, est deleniti libero recusandae officiis. Voluptatibus quisquam voluptatum expedita recusandae architecto quibusdam.</p>
-            <ul class="ul-check list-unstyled success">
-              <li>Onsectetur adipisicing elit</li>
-              <li>Dolorem saepe non eligendi possimus</li>
-              <li>Voluptate odit corrupti vitae</li>
-            </ul>
+            <h2>{{$user->name}}</h2>
+            {{$user->description}}
           </div>
         </div>
       </div>
@@ -83,26 +78,7 @@
         </div>
       </div>
     </div>
-    
-    <div class="site-section bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <img src="{{asset('website')}}/images/img_1.jpg" alt="Image" class="img-fluid">
-          </div>
-          <div class="col-md-5 ml-auto">
-            <h2>Learn From Us</h2>
-            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptate odit corrupti vitae cupiditate explicabo, soluta quibusdam necessitatibus, provident reprehenderit, dolorem saepe non eligendi possimus autem repellendus nesciunt, est deleniti libero recusandae officiis. Voluptatibus quisquam voluptatum expedita recusandae architecto quibusdam.</p>
-            
-            <ul class="ul-check list-unstyled success">
-              <li>Onsectetur adipisicing elit</li>
-              <li>Dolorem saepe non eligendi possimus</li>
-              <li>Voluptate odit corrupti vitae</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+ 
 
 
     <div class="site-section bg-white">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\User;
+use App\Models\Setting;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -10,6 +12,7 @@ class FrontEndController extends Controller
 {
    public function home(){
     $posts = Post::with('category', 'user')->orderBy('created_at', 'DESC')->take(5)->get();
+   
     $firstPosts2 = $posts->splice(0, 2);
     $middlePosts = $posts->splice(0, 1);
     $lastPosts = $posts->splice(0);
@@ -24,8 +27,11 @@ class FrontEndController extends Controller
     return view('website.home', compact(['recentPosts', 'firstPosts2','middlePosts','lastPosts', 'posts','firstFooterPost','middleFooterPost', 'lastFooterPost']));
    }
    public function about(){
-    return view('website.about');
+    $user = User::first();
+   // dd($user);
+    return view('website.about', compact('user'));
    }
+
    public function category($slug){
     $category = Category::where('slug', $slug)->first();
     if($category){
@@ -36,7 +42,8 @@ class FrontEndController extends Controller
     }
    }
    public function contact(){
-    return view('website.contact');
+    $setting = Setting::first();
+    return view('website.contact', compact('setting'));
    }
    public function post($slug){
         $post = Post::with('category', 'user')->where('slug', $slug)->first();
